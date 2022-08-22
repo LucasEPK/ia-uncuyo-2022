@@ -4,10 +4,16 @@
 1. Buscar dos ejemplos de aplicaciones de inteligencia artificial.
 
 **Primer ejemplo:**
-*chatbots*, un chatbot es un programa con el cual vos podes "chatear" con una computadora y esta te responde de la forma que lo haria un humano (en lo posible), esto es gracias al constante fedeo de data que se le envia a una computadora, esta aprende a hablar de forma similar a como lo haria un humano. La mejor aplicacion de esto seria un chatbot para resolucion de problemas en un sitio nos podria dar una solucion al problema que tenemos como lo haria habalando con un humano.
+*autos que se manejan solos*, la idea de que un auto se maneje solo no es una idea reciente ya que hay varios ejemplos en peliculas de ficcion, pero ahora gracias a la inteligencia artificial deja de ser ficcion y ya se ha convertido en realidad, aunque todavia está en desarollo y parece estar lejos de sustituir los autos normales por distintos problemas, un de ellos el moral.
+
+El ejemplo más popular de auto que se maneja solo son algunos de los autos que produce Tesla
 
 **Segundo ejemplo:**
-*Google Thing Translator*, a travez de IA de reconocimiento de imagen reconoce un objeto al cual se le esta haciendo una foto y nos lo muestra en nuestro idioma y en el idioma que nos interesa traducirlo
+*Google Thing Translator*, esta aplicacion te permite tomar foto de algo y podes escuchar como se dice en otro idioma. Nos puede servir por ejemplo si estamos en otro pais en un restaurante y queremos ordenar algo pero no sabemos como pronunciarlo o decirlo.
+
+Esto es posible mediante 2 API de google que son Cloud Vision y Translate. Basicamente, tomas una foto, se manda a la API Cloud Vision que te da varios nombres de lo que ve y un porcentaje de confianza de que sea eso lo que está en la foto, toma el que tiene mayor porcentaje y lo envia al API Translate y listo ya tenemos toda la info que necesitamos. 
+
+Obviamente esto no es perfecto pueden ocurrir varios errores por ejemplo confundir una pelota de golf por un huevo, o sino que la traduccion sea incorrecta porque se traduce fuera de contexto por ejemplo confundir planta por planta industrial en otro idioma. Con esto notamos que todavia estamos trabajando con una inteligencia artificial no tan avanzada porque una supuesta inteligencia artificial tiene que saber distinguir a travez del contexto como lo hacemos los humanos.
 
 2. ¿Que se entiende por inteligencia artificial?
 
@@ -28,16 +34,22 @@ Hasta el dia de hoy no hemos llegado al nivel de Theory of mind o de Self-Awaren
 
 La inteligencia puede ser definida en varias maneras: la capacidad de abstraccion, logica, entendimiento, consciencia de si mismo, aprendimiento, conocimiento emocional, razon, planificacion, creatividad, pensamiento critico y resolucion de problemas.
 
-Más generalmente, puede ser describida como la abilidad de percibir o inferir información, y mantenerla como conocimiento para aplicarla a conductas adptativas dentro de un ambiente o contexto
+Más generalmente, puede ser describida como **la abilidad de percibir o inferir información, y mantenerla como conocimiento para aplicarla a conductas adptativas dentro de un ambiente o contexto.**
 
 4. ¿Que se entiende por artificial?
 
-Artificial se entiende *a todo aquello creado por un humano que no se encuentra en ese estado en la naturaleza*
+Artificial se entiende **a todo aquello creado por un humano que no se encuentra en ese estado en la naturaleza**
 
 ### Fuentes
 
-https://www.youtube.com/watch?v=SPsuVmCiwVQ
-https://www.youtube.com/watch?v=kWmX3pd1f10
-https://www.techtarget.com/searchenterpriseai/definition/AI-Artificial-Intelligence
-https://builtin.com/artificial-intelligence
-https://en.wikipedia.org/wiki/Intelligence
+[title](https://www.youtube.com/watch?v=SPsuVmCiwVQ)
+
+[title](https://www.youtube.com/watch?v=kWmX3pd1f10)
+
+[title](https://www.techtarget.com/searchenterpriseai/definition/AI-Artificial-Intelligence)
+
+[title](https://builtin.com/artificial-intelligence)
+
+[Wikipedia intellingence](https://en.wikipedia.org/wiki/Intelligence)
+
+[A.I. Experiments: Thing Translator](https://www.youtube.com/watch?v=bH5sU7ew5V4&feature=emb_imp_woyt)

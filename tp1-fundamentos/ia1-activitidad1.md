@@ -4,9 +4,13 @@
 1. Buscar dos ejemplos de aplicaciones de inteligencia artificial.
 
 **Primer ejemplo:**
-*autos que se manejan solos*, la idea de que un auto se maneje solo no es una idea reciente ya que hay varios ejemplos en peliculas de ficcion, pero ahora gracias a la inteligencia artificial deja de ser ficcion y ya se ha convertido en realidad, aunque todavia está en desarollo y parece estar lejos de sustituir los autos normales por distintos problemas, un de ellos el moral.
+*google Deep Mind*, el ejemplo más popular de lo que se pudo lograr con Deep Mind es AlphaGo, AlphaGo es una inteligencia artificial creado a travez de los algoritmos de aprendizaje de Deep Mind que sabe jugar a GO un juego chino bastante anciano. Lo impresionante de AlphaGo fue que ganó contra el mejor jugador de GO en una partida de años atras, esto no es un concepto nuevo ya que ya ha pasado con jugadores de Ajedrez en donde ahora las computadoras ya juegan a otro nivel que los pro, pero lo impresionante de esto es que AlphaGo en vez de usar fuerza bruta para calcular todos los posibles movimientos que se pueden hacer AlphaGo usó reinforcement learning y neural networks para poder llegar a ganar contra el gran maestro de Go.
 
-El ejemplo más popular de auto que se maneja solo son algunos de los autos que produce Tesla
+El juego Go es importante en la inteligencia artificial porque a diferencia del ajedrez el numero de movimientos posibles es como el numero de atomos en el universo osea que es imposible calcularlas todas. Mientras el Ajedrez es un juego de logica el Go es más un juego de intuición.
+
+Lo bueno de esto es que Deep Mind no nos sirve solo para poder jugar Go, sino que como usa algoritmos generales en teoria podria aplicarse a todo lo que queramos, de hecho el objetivo de Deep Mind es **resolver la inteligencia**. Esto significa entender completamente como crear una inteligencia como la humana.
+
+Esto podria tener muchas aplicaciones en variados campos. En una de las cosas que tambien se está probando es en videojuegos empezando con los más antiguos como Space Invaders hasta juegos más complicados como DOOM.
 
 **Segundo ejemplo:**
 *Google Thing Translator*, esta aplicacion te permite tomar foto de algo y podes escuchar como se dice en otro idioma. Nos puede servir por ejemplo si estamos en otro pais en un restaurante y queremos ordenar algo pero no sabemos como pronunciarlo o decirlo.

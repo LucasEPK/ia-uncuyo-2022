@@ -57,3 +57,5 @@ Artificial se entiende **a todo aquello creado por un humano que no se encuentra
 [Wikipedia intellingence](https://en.wikipedia.org/wiki/Intelligence)
 
 [A.I. Experiments: Thing Translator](https://www.youtube.com/watch?v=bH5sU7ew5V4&feature=emb_imp_woyt)
+
+[Google's Deep Mind Explained! - Self Learning A.I.](https://www.youtube.com/watch?v=TnUYcTuZJpM)

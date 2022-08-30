@@ -49,4 +49,37 @@ También hay que considerar que para entender como los agentes humanos funcionan
 
 ## Inteligencia Artificial fuerte
 
+Muchos filosofos afirman que una maquina que pasa el test de Turing aún no estaria realmente pensando sino que seria una simulacion de pensar. Turing llama a esto el **argumento desde la conciencia**, la maquina tiene que ser consciente de sus proprios estados mentales y acciones. Aunque el punto principal sea sobre fenomenologia, la maquina tiene que realmente sentir emociones. Otros se enfocan en intencionalidad osea, la pregunta si los deseos, creencias y otras representaciones son realmente sobre algo en la vida real.
+
+La respuesta de Turing a este argumento fue que no es util conocer la respuesta a esta pregunta, ya que tampoco tenemos evidencia directa de los estados mentales de otros humanos, pero asumimos que todos piensan.
+
+Esta respuesta nos sugiere que a medida de que las maquinas lleguen a un determinado nivel de sofisticación este argumento se andrá disolviendo solo. Esto haria que se desuelva tambien la diferencia entre IA debil y fuerte. En contra de esto, uno podria insistir en que hay un problema factual: los humanos tenemos mentes de verdad y las maquinas podrian como no podrian tenerlas. Para saber la respuesta de esto deberiamos entender como los humanos tenemos mentes de verdad. Muchos filosofos han hecho esfuerzos para resolver este **problema mental-corporal**. Hay dos maneras de pensar este problema:
+la primera es la **dualista** que dice que la actividad mental de pensar y los procesos fisicos del cuerpo son dos cosas separadas, mientras que la segunda el **fisicalismo** dice que la mente no está separada del cuerpo, que los estados mentales son estados fisicos.
+
+Los filosofos fisicalistas han intentado explicar que significa que una persona, y por extension una computadora, está en un particular estado mental. Se han enfocado en particular en estados intencionales, como por ejemplo creer, saber, desear, tener miedo, etc...
+
+Además surgen numerosos problemas del hecho que todavia no sabemos como estamos concientes, y si no sabemos eso tampoco sabemos como crear a algo intencionalmente que sea conciente o si algo que ya creamos sea conciente. Turing admite que el problema de la conciencia es dificil, pero dice que no tiene mucha relevancia en la practica de la IA, ya que se está tratando de hacer programas que actuan inteligentemente, que adicionalmente queramos hacerlos concientes es otro problema aparte.
+
+
 ## La etica y los riesgos de desarrollar Inteligencia Artificial
+
+Hasta ahora hemos hecho los que nos gusta hacer a los humanos, osea concentrarnos en si *podriamos* desarollar IA, pero también deberiamos considerar si *deberiamos*. Si los efectos de la tecnologia de IA es mucho más probable que sean negativos a que sean positivos, entonces seria una responsabilidad moral de los trabajadores en el campo de redireccionar su investigación.
+
+Todos los cientificos y ingenieros tienen que considerar problemas eticos, pero la IA propone nuevos problemas:
+
+- Las personas podrian perder su trabajo por culpa de la automatización
+
+La industria moderna de la economia ya se ha vuelto dependiente de las computadoras en general, pero hasta ahora, la automatizacion ha creado más trabajos de los que ha eliminado, y ha creado trabajos más interesantes y de más recaudo. Ahora que la IA se define como "Agente inteligente" diseñado para asistir al humano, la perdida del trabajo es un problema menor a lo que era cuando IA se enfocaba en sistemas expertos diseñados para remplazar a los humanos. Aunque algunos investigadores siguen pensando que hacer el trabajo completo sea el objetivo correcto para la IA.
+
+- Las personas podrían tener demasiado tiempo de ocio
+
+Algunos pensaban que las personas modernas iban a estar en un futuro lleno de aburrimiento, donde "el problema mayor en su vida es el de elegir entre los miles de canales en la televisión". Esta es una visión muy anticuada y necia ya que sabiendo que los humanos cuando están aburridos es cuando más tienen ideas y hacen cosas.
+
+En vez, hoy en dia las personas trabajando en industrias intensas en el conocimiento se han encontrado en que tener que estar al paso y trabajar más horas.
+
+Con la IA podria darnos la oportunidad de tomarnos un tiempo libre mientra los agentes automaticos se encargan por un tiempo de nuestros asuntos.
+
+- Las personas podrían perder el sentido de ser unicos
+- Sistemas de IA podrian ser utilizados para objetivos indeseables
+- El uso de la IA podria resultar en una perdida de responsabilidad
+- El exito de la IA podria significar el fin de la raza humana

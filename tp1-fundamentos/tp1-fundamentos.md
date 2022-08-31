@@ -80,6 +80,50 @@ En vez, hoy en dia las personas trabajando en industrias intensas en el conocimi
 Con la IA podria darnos la oportunidad de tomarnos un tiempo libre mientra los agentes automaticos se encargan por un tiempo de nuestros asuntos.
 
 - Las personas podrían perder el sentido de ser unicos
+
+En realidad la humanidad ya ha sobrevivido caidas en nuestro senso de unicidad, como por ejemplo cuando se dejó de pensar que la tierra estaba en el centro del sistema solar.
+
+La IA, si tiene mucho exito, seria tan peligrosa a las ideas morales de la sociedad del 21-esimo siglo como lo fue la teoria de la evolucion de darwin a las del 19-esimo siglo.
+
 - Sistemas de IA podrian ser utilizados para objetivos indeseables
+
+Una ciencia se dice que es util cuando su desarollo tiene la posibilidad de acentuar inequidades existente o promueve la destruccion de la humanidad. Esto ciertamente vale para la IA, ya que ya se han usado sistemas autonomos de IA para guerras. En el sentido extremo de la moral algunos dicen que esto es una version mejorada de ponerse un casco en la cabeza si sos un soldado. En otro sentido armas roboticas crean nuevos riesgos, por ejemplo una maquina podria decidir matar inocentes.
+
+Otro peligro de la IA es la perdida de privacidad, algunos las aceptan diciendo que ya no tenemos privacidad y otros piensan que deberiamos ser cuidadosos.
+
 - El uso de la IA podria resultar en una perdida de responsabilidad
+
+Esto puedo conectarse a lo de arriba, si una maquina empieza a matar civiles por un fallo, quien toma la responsabilidad?
+Y si un vehiculo que se maneja solo hace un accidente?
+
 - El exito de la IA podria significar el fin de la raza humana
+
+Casi todas las tecnologias tienen el potencial de causar daño en las manos equivocadas pero con la IA y robotica, tenemos el nuevo problema que las manos equivocadas sean propriamente la de la tecnologia en si misma.
+
+La cuestion es si un sistema de IA tiene un mayor riesgo que software tradicional. Vamos a ver tres fuentes de riesgo:
+
+Primero, el estado de estimacion del sistema de IA podria ser incorrecto, causando hacer algo incorrecto. Por ejemplo un auto que se maneja solo detecta incorecctamente la posicion de un auto y produce un accidente, o un sistema de defensa contra misiles detecta un misil erroneamente, lanzando un misil, y causa la muerte de millones de personas. Estos errores los pueden cometer tambien humanos o computadoras, osea no es un problema especifico, solo se necesitan medidas de seguridad para que esto no pase.
+
+Segundo, especificar la justa utilidad de un sistema de IA para maximizarlo no es tan facil. Por ejemplo podriamos pedirle que minimize el sufrimiento humano expresandolo como un sistema de recompensa adicional en el tiempo. Pero por como somos los humanos siempre encontramos una forma de sufrir aún cuando la estamos pasando bien. Entonces la maquina podria pensar que la solucion optimal seria la de terminar con la raza humana lo más pronto posible, si no hay humanos no hay sufrimiento. Hay que ser cuidados con lo que se le pide.
+
+Tercero, la funcion de aprendizaje del sistema de IA podria causar que evolucione en un sistema con conductas no deseadas.
+
+Suponiendo que pueda existir una **maquina ultrainteligente** definida como una maquina que supera cualquier tipo de inteligencia humana, aún la de un genio. Esa maquina seriá capaz de diseñar maquinas aún más inteligentes y esto generaria una **explosion de inteligencia**, entonces la maquina ultrainteligente sería el ultimo invento que un humano pueda hacer. La explosion de inteligencia tambien se llama **singularidad tecnologica**.
+El concepto de maquinas ultrainteligentes asume que la inteligencia sea un atributo esencialmente importante, y si tienes suficiente de ella, todos los problemas pueden resolverse. Pero sabemos que hay limites en la computabilidad y complejidad computacional.
+
+Si las maquinas ultrainteligentes son posibles, deberiamos asumir la responsabilidad de diseñarlas para que nos traten bien para evitar nuestra extinción.
+
+Funciones de amigabilidad deberían estar desde el principio, porque ya que una maquina puede aprender, pongamos como ejemplo que vea que un humano mata un insecto sin consecuencias morales porque los insectos no tienen un cerebro tan desarollado como el nuestro, entonces la maquina podria concluir que para el matar un humanos tampoco tenga ninguna aplicacion moral porque tenemos un intelecto inferior al de ellos.
+
+También existe la consideración que si los robots empiezan a estar concientes entonces podria ser immoral tratarlos solo como maquinas.
+
+![xd](Fundamentos-filosoficos.png)
+
+### Conclusion y opinion personal
+
+En mi opinion, como dijo Turing, la IA se va a ir desarollando y de a poco se va a ir disolviendo el concepto de IA debil y fuerte. Creo que la IA sea una ciencia que nos va a ayudar a resolver uno de los misterios más grandes de la ciencia, como funciona el cerebro en detalle. También pienso que se deberia tener mucho cuidado con desarollar esta tecnologia porque tienen un potencial muy alto y los humanos no somos muy buenos a predecir los desastres que podrian pasar y actuar a tiempo, como demostrado por la pandemia generada por el covid-19.
+
+A todo esto me afascina el concepto de que si una computadora podría llegar a crear algo realmente original, como un cuadro o una pelicula. Seria realmente original o es solo una copia de lo que nosotros humanos hemos inventado hasta ahora? A todo esto, nosotros humanos somos realmente originales? La mayoria de las ideas vienen por inspiracion de ideas que tuvieron nuestro antecedentes y una mezcla de nuestro ingenio y intuicion. Ese ingenio e intucion pueden ser generados por un conjunto de reglas? Nosotros humanos de donde sacamos ese ingenio e intuicion? Tambien realizamos calculos solamente que son inconcientes? Que tan diferentes seriamos de una maquina inteligente y conciente?
+También el concepto de que una maquina se enamore es muy interesante.
+
+Si el invento del internet y del celular ha cambiado tanto al mundo, no alcanzo ni a imaginar como serian nuestras vidas con IA super inteligentes.

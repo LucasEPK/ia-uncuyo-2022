@@ -4,16 +4,16 @@
 La afirmacion que las maquinas podrian actuar *como si fueran inteligentes* es llamada por los filosofos la hipotesis de **IA debil**, y la afirmación que las maquinas que hacen eso esten *realmente pensando* (No solo simulando el pensamiento) es llamada la hipotesis de **IA fuerte**.
 
 ## Inteligencia Artificial debil
-Surge la pregunta de que si las maquinas pueden actuar inteligentemente. Esto dependeria de la definicion de inteligencia artificial, pero los filosofos estan interesandos en el problema de comparar dos arquitecturas *humana y maquina*. Además, ellos tradicionalmente formaron la pregunta no en terminos de maximizar la utilidad esperada sino como "**Las maquinas pueden pensar?**".
+Surge la pregunta de que si las maquinas pueden actuar de manera inteligente. Esto dependeria de la definicion de inteligencia artificial, pero los filosofos estan interesandos en el problema de comparar dos arquitecturas *humana y maquina*. Además, ellos tradicionalmente formaron la pregunta no en terminos de maximizar la utilidad esperada sino como "**Las maquinas pueden pensar?**".
 
-Alan Turing, en su famoso paper "Computing Machinery and Intelligence"(1950) sugiere la idea que en vez de preguntarnos si las maquinas pueden pensar, deberiamos preguntas si las maquinas pueden pasar un test de inteligencia conductual, el cual ha sido llamado **Turing Test**.
-El test es que un programa tenga una conversación (a travez de mensajes online escritos) con un interrogador por 5 minutos. El interrogador despues tiene que adivinar si la conversación fue con un programa o una persona, el programa pasa el test si engaña el interrogador 30% de las veces. Los programas todaviá no logran hacer esto con un juez sofisticado. Aunque muchas personas han sido engañadas cuando no se les dice que podrian haber estado hablando con una computadora.
+**Alan Turing**, en su famoso paper "Computing Machinery and Intelligence"(1950) sugiere la idea que en vez de preguntarnos si las maquinas pueden pensar, deberiamos preguntar si las maquinas pueden pasar un test de inteligencia conductual, el cual ha sido llamado **Turing Test**.
+El test es que un programa tenga una conversación (a travez de mensajes escritos online) con un interrogador por 5 minutos. El interrogador despues tiene que adivinar si la conversación fue con un programa o una persona, el programa pasa el test si engaña el interrogador 30% de las veces. Los programas todaviá no logran hacer esto con un juez sofisticado. Aunque muchas personas han sido engañadas cuando no se les dice que podrian haber estado hablando con una computadora.
 
 Turing también examinó una gran variedad de posibles objeciones a la posibilidad de maquinas inteligentes, veremos algunas:
 
 - El argumento desde la incapacidad
 
-El "argumento desde la incapacidad" dice que "Una maquina nunca puede hacer X". Como ejemplos de X, turing menciona los siguientes:
+El "argumento desde la incapacidad" dice que "*Una maquina nunca puede hacer X*". Como ejemplos de X, turing menciona los siguientes:
 
 Ser buena, ingeniosa, hermosa, amigable, tener iniciativa, tener un sentido del humor, distinguir el bueno del malo, cometer errores, enamorarse, hacer que alguien se enamore de ella y muchos más
 
@@ -25,7 +25,7 @@ Es claro que las computadoras pueden hacer muchas cosas como o mejor que los hum
 
 - La objeción matematica
 
-Es bien sabido que durante el trabajo de Turing y Godel, que ciertas preguntas matematicas son en principio incontestables por particulares sistemas formales. **El teorema de Incompletitud de Godel** es el ejemplo más famoso de esto.
+Es bien sabido que durante el trabajo de Turing y Godel,que ciertas preguntas matematicas son en principio incontestables por particulares sistemas formales. **El teorema de Incompletitud de Godel** es el ejemplo más famoso de esto.
 
 Algunos filosofos han afirmado que este teorema demuestra que las maquinas son mentalmente inferiores que los humanos. Esta afirmacion tiene 3 problemas: 
 
@@ -37,7 +37,7 @@ La tercera y más importante, incluso si probamos que las computadoras tienen li
 
 - El argumento desde la informalidad
 
-Una de las criticas más influyente y persistente de la IA como inciativa fue puesta a la luz por Turing como el "argument desde la informalidad de la conducta". Esencialmente, esta es la afirmación que la conducta humana es demasiado complicada para ser capturada por cualquier conjunto de reglas simples y ya que las computadoras solo pueden seguir un conjunto de reglas, no pueden generar una conducta tan inteligente como la de los humanos. La incapacidad de capturar todo en un conjunto de reglas logicas es llamado el **"qualification problem"** en IA.
+Una de las criticas más influyente y persistente de la IA como inciativa fue puesta a la luz por Turing como el "*argumento desde la informalidad de la conducta*". Esencialmente, esta es la afirmación que la conducta humana es demasiado complicada para ser capturada por cualquier conjunto de reglas simples y ya que las computadoras solo pueden seguir un conjunto de reglas, no pueden generar una conducta tan inteligente como la de los humanos. La incapacidad de capturar todo en un conjunto de reglas logicas es llamado el **"qualification problem"** en IA.
 
 El principal defensor de esta idea es el filosofo Hubert Dreyfus, esta critica se dirige más que nada a nuestra manera de programar computadoras. 
 
@@ -49,16 +49,16 @@ También hay que considerar que para entender como los agentes humanos funcionan
 
 ## Inteligencia Artificial fuerte
 
-Muchos filosofos afirman que una maquina que pasa el test de Turing aún no estaria realmente pensando sino que seria una simulacion de pensar. Turing llama a esto el **argumento desde la conciencia**, la maquina tiene que ser consciente de sus proprios estados mentales y acciones. Aunque el punto principal sea sobre fenomenologia, la maquina tiene que realmente sentir emociones. Otros se enfocan en intencionalidad osea, la pregunta si los deseos, creencias y otras representaciones son realmente sobre algo en la vida real.
+Muchos filosofos afirman que una maquina que pasa el test de Turing aún no estaria realmente pensando sino que seria una simulacion de pensar. Turing llama a esto el **argumento desde la conciencia**, la maquina tiene que ser consciente de sus proprios estados mentales y acciones. Otros se enfocan en intencionalidad osea, la pregunta si los deseos, creencias y otras representaciones son realmente sobre algo en la vida real.
 
-La respuesta de Turing a este argumento fue que no es util conocer la respuesta a esta pregunta, ya que tampoco tenemos evidencia directa de los estados mentales de otros humanos, pero asumimos que todos piensan.
+La respuesta de Turing a este argumento fue que no es util conocer la respuesta a esta pregunta, ya que *tampoco tenemos evidencia directa de los estados mentales de otros humanos, pero asumimos que todos piensan*.
 
 Esta respuesta nos sugiere que a medida de que las maquinas lleguen a un determinado nivel de sofisticación este argumento se andrá disolviendo solo. Esto haria que se desuelva tambien la diferencia entre IA debil y fuerte. En contra de esto, uno podria insistir en que hay un problema factual: los humanos tenemos mentes de verdad y las maquinas podrian como no podrian tenerlas. Para saber la respuesta de esto deberiamos entender como los humanos tenemos mentes de verdad. Muchos filosofos han hecho esfuerzos para resolver este **problema mental-corporal**. Hay dos maneras de pensar este problema:
 la primera es la **dualista** que dice que la actividad mental de pensar y los procesos fisicos del cuerpo son dos cosas separadas, mientras que la segunda el **fisicalismo** dice que la mente no está separada del cuerpo, que los estados mentales son estados fisicos.
 
 Los filosofos fisicalistas han intentado explicar que significa que una persona, y por extension una computadora, está en un particular estado mental. Se han enfocado en particular en estados intencionales, como por ejemplo creer, saber, desear, tener miedo, etc...
 
-Además surgen numerosos problemas del hecho que todavia no sabemos como estamos concientes, y si no sabemos eso tampoco sabemos como crear a algo intencionalmente que sea conciente o si algo que ya creamos sea conciente. Turing admite que el problema de la conciencia es dificil, pero dice que no tiene mucha relevancia en la practica de la IA, ya que se está tratando de hacer programas que actuan inteligentemente, que adicionalmente queramos hacerlos concientes es otro problema aparte.
+Además surgen numerosos problemas del hecho que todavia no sabemos como estamos concientes, y si no sabemos eso tampoco sabemos como crear a algo intencionalmente que sea conciente o si algo que ya creamos sea conciente. Turing admite que el problema de la conciencia es dificil, pero dice que no tiene mucha relevancia en la practica de la IA, ya que se está tratando de hacer programas que actuan inteligentemente, **que adicionalmente queramos hacerlos concientes es otro problema aparte**.
 
 
 ## La etica y los riesgos de desarrollar Inteligencia Artificial
@@ -77,28 +77,28 @@ Algunos pensaban que las personas modernas iban a estar en un futuro lleno de ab
 
 En vez, hoy en dia las personas trabajando en industrias intensas en el conocimiento se han encontrado en que tener que estar al paso y trabajar más horas.
 
-Con la IA podria darnos la oportunidad de tomarnos un tiempo libre mientra los agentes automaticos se encargan por un tiempo de nuestros asuntos.
+Con la IA tambien podria darnos la oportunidad de tomarnos un tiempo libre mientra los agentes automaticos se encargan por un tiempo de nuestros asuntos.
 
 - Las personas podrían perder el sentido de ser unicos
 
-En realidad la humanidad ya ha sobrevivido caidas en nuestro senso de unicidad, como por ejemplo cuando se dejó de pensar que la tierra estaba en el centro del sistema solar.
+En realidad la humanidad ya ha sobrevivido caidas en nuestro sentido de unicidad, como por ejemplo cuando se dejó de pensar que la tierra estaba en el centro del sistema solar.
 
 La IA, si tiene mucho exito, seria tan peligrosa a las ideas morales de la sociedad del 21-esimo siglo como lo fue la teoria de la evolucion de darwin a las del 19-esimo siglo.
 
 - Sistemas de IA podrian ser utilizados para objetivos indeseables
 
-Una ciencia se dice que es util cuando su desarollo tiene la posibilidad de acentuar inequidades existente o promueve la destruccion de la humanidad. Esto ciertamente vale para la IA, ya que ya se han usado sistemas autonomos de IA para guerras. En el sentido extremo de la moral algunos dicen que esto es una version mejorada de ponerse un casco en la cabeza si sos un soldado. En otro sentido armas roboticas crean nuevos riesgos, por ejemplo una maquina podria decidir matar inocentes.
+Una ciencia se dice que es util cuando su desarollo tiene la posibilidad de acentuar inequidades existente o promueve la destruccion de la humanidad. Esto ciertamente vale para la IA, ya se han usado sistemas autonomos de IA para guerras. En el sentido extremo de la moral algunos dicen que esto es una version mejorada de ponerse un casco en la cabeza si sos un soldado. En otro sentido armas roboticas crean nuevos riesgos, por ejemplo una maquina podria decidir matar inocentes.
 
 Otro peligro de la IA es la perdida de privacidad, algunos las aceptan diciendo que ya no tenemos privacidad y otros piensan que deberiamos ser cuidadosos.
 
 - El uso de la IA podria resultar en una perdida de responsabilidad
 
-Esto puedo conectarse a lo de arriba, si una maquina empieza a matar civiles por un fallo, quien toma la responsabilidad?
+Esto puede conectarse a lo antes descripto, si una maquina empieza a matar civiles por un fallo, quien toma la responsabilidad?
 Y si un vehiculo que se maneja solo hace un accidente?
 
 - El exito de la IA podria significar el fin de la raza humana
 
-Casi todas las tecnologias tienen el potencial de causar daño en las manos equivocadas pero con la IA y robotica, tenemos el nuevo problema que las manos equivocadas sean propriamente la de la tecnologia en si misma.
+Casi todas las tecnologias tienen el potencial de causar daño en las manos equivocadas pero con la IA y robotica, tenemos el nuevo problema que *las manos equivocadas sean propriamente la de la tecnologia en si misma*.
 
 La cuestion es si un sistema de IA tiene un mayor riesgo que software tradicional. Vamos a ver tres fuentes de riesgo:
 
@@ -113,7 +113,7 @@ El concepto de maquinas ultrainteligentes asume que la inteligencia sea un atrib
 
 Si las maquinas ultrainteligentes son posibles, deberiamos asumir la responsabilidad de diseñarlas para que nos traten bien para evitar nuestra extinción.
 
-Funciones de amigabilidad deberían estar desde el principio, porque ya que una maquina puede aprender, pongamos como ejemplo que vea que un humano mata un insecto sin consecuencias morales porque los insectos no tienen un cerebro tan desarollado como el nuestro, entonces la maquina podria concluir que para el matar un humanos tampoco tenga ninguna aplicacion moral porque tenemos un intelecto inferior al de ellos.
+Funciones de amigabilidad deberían estar desde el principio, porque ya que una maquina puede aprender, pongamos como ejemplo que vea que un humano mata un insecto sin consecuencias morales porque los insectos no tienen un cerebro tan desarollado como el nuestro, entonces la maquina podria concluir que para el, matar un humanos tampoco tenga ninguna aplicacion moral porque tenemos un intelecto inferior al de ellos.
 
 También existe la consideración que si los robots empiezan a estar concientes entonces podria ser immoral tratarlos solo como maquinas.
 
@@ -127,3 +127,7 @@ A todo esto me afascina el concepto de que si una computadora podría llegar a c
 También el concepto de que una maquina se enamore es muy interesante.
 
 Si el invento del internet y del celular ha cambiado tanto al mundo, no alcanzo ni a imaginar como serian nuestras vidas con IA super inteligentes.
+
+#### Fuentes
+
+AIMA 3

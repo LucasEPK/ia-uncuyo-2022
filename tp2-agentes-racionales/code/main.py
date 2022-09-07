@@ -1,5 +1,10 @@
 from f_matrices import *
+from aspiradora import *
 
-matriz= crear_matriz(2, 4)
-llenar_matriz(matriz, 0)
-print_matriz(matriz)
+mapa1 = Environment(4, 4)
+aspiradora = Agent(mapa1)
+
+aspiradora.think(mapa1)
+
+print("Puntos finales:", aspiradora.points)
+print("Vida final:", mapa1.life)

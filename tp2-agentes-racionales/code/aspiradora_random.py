@@ -57,12 +57,14 @@ class Environment: #clase que configura la grilla, sus funciones y atributos
             elif action == 4: #suck
                 #print("limpiar")
                 #limpiamos el espacio en donde esta el agente, sacamos uno a dirt count y recalculamos el dirt rate actualizandolo
+                if self.mapa[agent.posY][agent.posX] != 0:
+                    self.mapa[agent.posY][agent.posX]= 0
+                    self.dirt_count -= 1
+                    self.dirt_rate = calcular_suciedad(self)
 
-                self.mapa[agent.posY][agent.posX]= 0
-                self.dirt_count -= 1
-                self.dirt_rate = calcular_suciedad(self)
-
-                return True
+                    return True
+                else:
+                    return False
             elif action == 5: #idle, no hacemos nada
                 #print("ociar")
                 return True
@@ -141,8 +143,8 @@ class Agent: #clase agente que va a ser nuestra aspiradora "inteligente"
 
     def suck(self, env): #accion 4, toma un objeto de tipo environment como parametro
         #limpiamos la casilla en la que estamos porque pensamos que está sucia y agregamos un punto
-        env.accept_action(4, self)
-        self.points += 1 
+        if env.accept_action(4, self):
+            self.points += 1 
 
     def idle(self, env): #accion 5, toma un objeto de tipo environment como parametro
         #no hacemos nada pero cuenta como accion
@@ -164,20 +166,17 @@ class Agent: #clase agente que va a ser nuestra aspiradora "inteligente"
             # print("puntos:", self.points)
             # env.print_environment(self)
 
-            if self.perspective(env) == 1: #si estamos en una casilla sucia la limpiamos
-                self.suck(env)
-            else:
-                if env.dirt_rate == 0: #si no hay más suciedad, nos quedamos idles
-                    return env.life #dato que nos sirve para calcular eficiencia
-                else: #si sigue habiendo suciedad nos movemos de forma random para encontrar suciedad
-                    self.move_random(env)
+            if env.dirt_rate == 0: #si no hay más suciedad, nos quedamos idles
+                return env.life #dato que nos sirve para calcular eficiencia
+            else: #si sigue habiendo suciedad nos movemos de forma random para encontrar suciedad
+                self.move_random(env)
 
-            #print("---------")
+            # print("---------")
 
         return env.life
 
     def move_random(self, env): #elige entre ir arriba abajo derecha izquierda de manera random
-        accion= random.randint(0, 3)
+        accion= random.randint(0, 5)
 
         if accion == 0:
             self.up(env)
@@ -187,3 +186,7 @@ class Agent: #clase agente que va a ser nuestra aspiradora "inteligente"
             self.left(env)
         elif accion == 3:
             self.right(env)
+        elif accion == 4:
+            self.suck(env)
+        elif accion == 5:
+            self.idle(env)

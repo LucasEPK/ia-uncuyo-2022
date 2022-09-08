@@ -6,4 +6,4 @@
 ![](Ej-C5.png)
 
 ## TP2 E)
-
+![](Ej-D.png)

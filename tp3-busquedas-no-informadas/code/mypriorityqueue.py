@@ -1,4 +1,4 @@
-from algo1 import *
+
 from linkedlist import *
 
 class PriorityQueue:

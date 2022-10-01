@@ -1,12 +1,21 @@
 from f_matrices import *
 from laberinto import *
 
-mapa = Environment(100,100, 0, 0, 99, 99, 0.2)
+
+p_inicialY = random.randint(0,99)
+p_inicialX = random.randint(0,99)
+p_finalY = random.randint(0,99)
+p_finalX = random.randint(0,99)
+obstacle_rate = random.randint(5,10)/100
+mapa = Environment(100,100, p_inicialX, p_inicialY, p_finalX, p_finalY, obstacle_rate)
 
 agent = Agent(mapa)
 
 think = agent.solve_by_bfs(mapa)
+print("Arriba resuelto por bfs")
 
 think = agent.solve_by_US(mapa)
+print("Arriba resuelto por us")
 
 think = agent.solve_by_dfsL(mapa)
+print("Arriba resuelto por dfs limitado")

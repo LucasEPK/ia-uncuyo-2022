@@ -1,4 +1,4 @@
-#modulo que ayuda a encontrar una solucion para el problema del agente no informado en un laberinto a travez de grafos y algoritmos de busqueda como bfs dfs ...
+#modulo que ayuda a encontrar una solucion para el problema del agente no informado en un laberinto a travez de grafos y algoritmos de busqueda bfs, limited dfs y uniform cost search
 from math import trunc
 from linkedlist import *
 from f_matrices import *
@@ -12,15 +12,14 @@ from myqueue import *
 class Aristas: #clase aristas con dos elementos, porque la aristas son relaciones de 2 vertices
     vi = None
     vj = None
-    weight = None #acá vamos a poner un vertex
+    weight = None #acá vamos a poner un vertex en aristas sin peso
 
-class Connection:
+class Connection:#clase connection que nos sirve para almacenar el peso de pasar de un vertice a otro en el grafo
     value = None
     weight = None
 
-class Vertex: #vertex para dfs
-    state= None
-    value = None #value encodeada del vertex (ejemplo la posicion [0,1] de la grilla encodeada es 100)
+class Vertex: #clase vertex
+    value = None #value codificada del vertex (ejemplo la posicion [0,1] de la grilla codificada es 100)
     color = 0 #WHITE es 0
     action = None #accion realizada por el nodo padre para llegar hasta aca
     path_cost = 0 #costo para llegar hasta acá
@@ -36,18 +35,18 @@ class Vertex: #vertex para dfs
 
         #acá nos fijamos con quien está conectado nuestro nodo del grafo, y ademas vemos si corresponde a arriba abajo izq o der
         for i in range(1, length(graph[value])): #empezamos desde 1 porque el primer elemento del grafo es su vertex
-            if access(graph[value], i) == access(graph[value], 0).value -filas_grilla:
+            if access(graph[value], i) == access(graph[value], 0).value -filas_grilla: #arriba
                 actions.append(UP)
-            elif access(graph[value], i) == access(graph[value], 0).value -1:
+            elif access(graph[value], i) == access(graph[value], 0).value -1: #izquierda
                 actions.append(LEFT)
-            elif access(graph[value], i) == access(graph[value], 0).value +filas_grilla:
+            elif access(graph[value], i) == access(graph[value], 0).value +filas_grilla: #abajo
                 actions.append(DOWN)
-            elif access(graph[value], i) == access(graph[value], 0).value +1:
+            elif access(graph[value], i) == access(graph[value], 0).value +1: #derecha
                 actions.append(RIGHT)
 
         return actions
 
-    def actionsUS(self, value, graph, filas_grilla): #funcion que dado un value, el grafo y el n de filas de la grilla devuelve las acciones que se pueden hacer desde ese value en un array
+    def actionsUS(self, value, graph, filas_grilla): #funcion action modificada para uniform cost search que dado un value, el grafo y el n de filas de la grilla devuelve las acciones y su respectivo peso que se pueden hacer desde ese value en una lista de python
         UP= 0
         LEFT = 1
         DOWN = 2
@@ -57,11 +56,12 @@ class Vertex: #vertex para dfs
 
         #acá nos fijamos con quien está conectado nuestro nodo del grafo, y ademas vemos si corresponde a arriba abajo izq o der
         for i in range(1, length(graph[value])): #empezamos desde 1 porque el primer elemento del grafo es su vertex
-            action= Connection()
-            current_connection = access(graph[value], i)
+
+            action= Connection()#definimos accion como connection porque no es util como notacion
+            current_connection = access(graph[value], i) #tomamos los vertices(connection) que estan connectado a nuestro nodo
             if current_connection.value == access(graph[value], 0).value -filas_grilla: #up
                 action.value = UP
-                action.weight = current_connection.weight
+                action.weight = current_connection.weight #peso de realizar esta acción
                 actions.append(action)
             elif current_connection.value == access(graph[value], 0).value -1: #left
                 action.value = LEFT
@@ -81,9 +81,11 @@ class Vertex: #vertex para dfs
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Funciones de search!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-def bfs(graph, v_buscado, v_inicial, frontier, filas_grilla): #funcion bfs que recibe un grafo (por matriz de adyacencia) 2 vertex 1 cola como parametros y el numero de filas en la grilla y que devuelve las acciones a seguir
+def bfs(graph, v_buscado, v_inicial, frontier, filas_grilla): #funcion bfs que recibe un grafo por lista de adyacencia 2 vertex 1 cola  y el numero de filas en la grilla como parametros y que devuelve las acciones a seguir en una lista de python
     GRAY = 1
     BLACK = 2
+
+    nodos_explorados = 0 #esto sirve para el informe
 
     if graph[v_inicial.value] == None: #esta excepcion pasa cuando la grilla inicial está encerrada completamente desde el principio sin dejar espacio para moverse
         print("FAILURE: la casilla inicial está encerrada")
@@ -100,11 +102,13 @@ def bfs(graph, v_buscado, v_inicial, frontier, filas_grilla): #funcion bfs que r
 
         node = dequeue(frontier)#sacamos el nodo que está primero en la cola
         node.color = BLACK #pintamos de negro el nodo porque lo vamos a expandir ahora
+        nodos_explorados += 1
 
         for action in node.actions(node.value, graph, filas_grilla): #para cada accion que se puede hacer desde el nodo hacemos:
             child = child_node(node, action, graph, filas_grilla) #determinamos sus nodos hijos
             if child.color != GRAY and child.color != BLACK: #si sus nodos hijos no se han expandido o explorado:
                 if child.value == v_buscado.value: #encontramos la solucion si esto es igual
+                    print("nodos_explorados:", nodos_explorados)
                     return solution(child)
 
                 enqueue(frontier, child) #ponemos en la cola a los nodos hijos
@@ -114,11 +118,15 @@ def bfs(graph, v_buscado, v_inicial, frontier, filas_grilla): #funcion bfs que r
     return None
 
 
-def dfs_limited(graph, v_buscado, v_inicial, filas_grilla, limite): #funcion dfs limitado que recibe un grafo (por matriz de adyacencia) y un vertex como parametros y que devuelve las acciones a seguir
+def dfs_limited(graph, v_buscado, v_inicial, filas_grilla, limite): #funcion dfs limitado que recibe un grafo por lista de adyacencia, dos vertex, el numero de filas de la grilla, y un limite de profundidad como parametros y que devuelve las acciones a seguir
+    nodos_explorados = [0] #se hace de esta forma porque si no se pierden los nodos explorados por la recursividad
 
-    return recursive_dls(v_inicial, v_buscado, filas_grilla, graph, limite)
+    resultado = recursive_dls(v_inicial, v_buscado, filas_grilla, graph, limite, nodos_explorados)
+    print("nodos_explorados:",nodos_explorados[0])
+    return resultado
 
-def recursive_dls(v_inicial, v_buscado, filas_grilla, graph, limit):
+def recursive_dls(v_inicial, v_buscado, filas_grilla, graph, limit, nodos_explorados): #funcion recursiva para calcular dfs limitado
+
     GRAY = 1
     BLACK = 2
 
@@ -129,56 +137,56 @@ def recursive_dls(v_inicial, v_buscado, filas_grilla, graph, limit):
     node.color = GRAY
     if node.value == v_buscado.value: #si la solucion es el mismo nodo inicial se devuelve la solucion con ese nodo
         return solution(node)
-    elif limit == 0:
-        #print("Cutoff")
+    elif limit == 0: #llegamos al limite no se pueden explorar más nodos
         return cutoff
     else:
         cutoff_occurred = False
 
         for action in node.actions(node.value, graph, filas_grilla): #para cada accion que se puede hacer desde el nodo hacemos:
             child = child_node(node, action, graph, filas_grilla) #determinamos sus nodos hijos
-            if child.color != GRAY and child.color != BLACK:
-                result = recursive_dls(child, v_buscado, filas_grilla, graph, limit-1)
+            if child.color != GRAY and child.color != BLACK: #exploramos recursivamente a sus hijos hasta llegar al limite
+                result = recursive_dls(child, v_buscado, filas_grilla, graph, limit-1, nodos_explorados)
 
                 child.color = BLACK
+                nodos_explorados[0] += 1
 
                 if result == 0:
                     cutoff_occurred = True
                 elif result != failure:
-                    #print("result:", result)
                     return result
         if cutoff_occurred:
-            #print("Cutoff")
             return cutoff
         else:
-            #print("Failure")
             return failure
         
 
-def uniform_cost_search(graph, v_buscado, v_inicial, frontier, filas_grilla): #funcion de busqueda uniforme que recibe un grafo (por matriz de adyacencia) y un vertex como parametros y que devuelve las acciones a seguir
+def uniform_cost_search(graph, v_buscado, v_inicial, frontier, filas_grilla): #funcion de busqueda uniforme que recibe un grafo (por lista de adyacencia), dos vertex que son el nodo goal y el inicial, una pila con prioridad(frontier) y el numero de filas del laberinto como parametros y devuelve las acciones a seguir en una linkedlist
     GRAY = 1
     BLACK = 2
+    nodos_explorados = 0 #esta variable nos sirve para el informe
 
     if graph[v_inicial.value] == None: #esta excepcion pasa cuando la grilla inicial está encerrada completamente desde el principio sin dejar espacio para moverse
         print("FAILURE: la casilla inicial está encerrada")
         return None
     node = access(graph[v_inicial.value], 0) #tomamos el vertex de la posicion inicial del grafo
     
-    enqueue_priorityReverse(frontier, v_inicial, 0) #empezamos la cola frontier
+    enqueue_priorityReverse(frontier, v_inicial, 0) #empezamos la cola frontier con prioridad 0 porque esto simboliza el peso de llegar a este nodo, como es el primero no hay peso
     node.color = GRAY #pintamos de gris el nodo a expandir
 
-    while not isEmpty(frontier):
+    while not isEmpty(frontier): #mientras que tengamos nodos que expandir
 
         node = dequeue_priority(frontier)#sacamos el nodo que está primero en la cola
         node.color = BLACK #pintamos de negro el nodo porque lo vamos a expandir ahora
+        nodos_explorados += 1
 
         if node.value == v_buscado.value: #encontramos la solucion si esto es igual
+            print("nodos_explorados:", nodos_explorados)
             return solution(node)
 
         for action in node.actionsUS(node.value, graph, filas_grilla): #para cada accion que se puede hacer desde el nodo hacemos:
             child = child_nodeUS(node, action, graph, filas_grilla, frontier) #determinamos sus nodos hijos
             if child.color != GRAY and child.color != BLACK: #si sus nodos hijos no se han expandido o explorado:
-                enqueue_priorityReverse(frontier, child, child.path_cost) #ponemos en la cola a los nodos hijos
+                enqueue_priorityReverse(frontier, child, child.path_cost) #ponemos en la cola a los nodos hijos con su respectivo costo para llegar hasta él como prioridad
                 child.color = GRAY #pintamos de gris el nodo a explorar
 
     print("FAILURE: no se puede llegar a la meta")
@@ -200,18 +208,18 @@ def child_node(parent, action, graph, filas_grilla): #funcion que toma como para
     return child
 
 
-def child_nodeUS(parent, actionC, graph, filas_grilla, frontier): #funcion que toma como parametros un padre, una accion, el grafo y el n de filas de la grilla y devuelve el vertex hijo del vertex padre (guardando padre y accion) al ejecutar la accion
+def child_nodeUS(parent, actionC, graph, filas_grilla, frontier): #funcion child_node modificada para uniform search que toma como parametros un padre, una accion(connection), el grafo, el n de filas de la grilla y la cola de prioridad frontier y devuelve el vertex hijo (guardando padre y accion) al ejecutar la accion desde el padre
     GRAY = 1
     BLACK = 2
 
     weight = actionC.weight
     child = result(parent, actionC.value, graph, filas_grilla)
-    if child.color != GRAY and child.color != BLACK:
+    if child.color != GRAY and child.color != BLACK: #no se ha explorado el nodo
 
         child.parent = parent
         child.action = actionC.value
         child.path_cost = parent.path_cost + weight
-    elif child.color == GRAY and child.path_cost > parent.path_cost + weight:
+    elif child.color == GRAY and child.path_cost > parent.path_cost + weight: #si pasa esto significa que llegamos a un nodo que todavia no se expande pero hemos llegado a travez de una conexion, tenemos que fijarnos si el costo para llegar a el que acabamos de encontrar es menor al que encontramos
         delete(frontier, child)
 
         child.parent = parent
@@ -224,7 +232,7 @@ def child_nodeUS(parent, actionC, graph, filas_grilla, frontier): #funcion que t
 
     return child
 
-def result(node, action, graph, filas_grilla): #funcion que recibe un vertex, una acción, el grafo y el n de filas de la grilla y retorna el vertex del vertex padre al ejecutar esa accion en el nodo padre
+def result(node, action, graph, filas_grilla): #funcion que recibe un vertex, una acción, el grafo y el n de filas de la grilla y retorna el vertex hijo del vertex padre al ejecutar esa accion en el nodo padre
 
     UP= 0
     LEFT = 1
@@ -245,7 +253,7 @@ def result(node, action, graph, filas_grilla): #funcion que recibe un vertex, un
 
     return new_node
 
-def solution(node): #desde el nodo que buscabamos devolvemos el camino que se hizo para encontrarlo a travez del atributo parent y action
+def solution(node): #desde el nodo que buscabamos devolvemos el camino que se hizo para encontrarlo a travez del atributo parent y action devolviendo una linkedlist con todas las acciones a realizar
 
     current_node = node
     solution = LinkedList()
@@ -259,10 +267,10 @@ def solution(node): #desde el nodo que buscabamos devolvemos el camino que se hi
 # !!!!!!!!!!!!!!!!!!!!!!!!!!! Funciones de creacion de estructuras !!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-def createGraph(l_vertices, l_aristas): #creamos el grafo y lo devolvemos con return
+def createGraph(l_vertices, l_aristas): #creamos el grafo como lista de adyacencia tomando como parametros una lista de vertex y una lista de arista, devolvemos el grafo
     #creamos el grafo como lista de adyacencia
 
-    #creamos un array con longitud igual a el numero de vertices
+    #creamos una lista de python con longitud igual a el numero de vertices
     graph = []
     n_vertices = length(l_vertices)
     for i in range(n_vertices):
@@ -275,25 +283,25 @@ def createGraph(l_vertices, l_aristas): #creamos el grafo y lo devolvemos con re
         if graph[current_arista.value.vi] == None: #lo declaramos como linkedlist si el grafo en esta posicion no se ha inicializado todavia
             graph[current_arista.value.vi] = LinkedList()
 
-            add(graph[current_arista.value.vi], current_arista.value.vj)# añadimos su segundo elemento a la linkedlist del grafo en la posicion del vertice
+            add(graph[current_arista.value.vi], current_arista.value.vj)# añadimos el segundo elemento de la arista a la linkedlist del grafo en la posicion del primer elemento de la arista
 
-            add(graph[current_arista.value.vi], current_arista.value.weight) #esto nos deja el vertice que estabamos analizando siempre en el head
+            add(graph[current_arista.value.vi], current_arista.value.weight) #dejamos el vertex del primer elemento de la arista en el primer lugar de la linkedlist de ese vertice en el grafo
         else:
-            insert(graph[current_arista.value.vi], current_arista.value.vj, 1) #esto nos deja el vertex en primera posicion
+            insert(graph[current_arista.value.vi], current_arista.value.vj, 1) #ponemos cualquier otro vertice en segundo lugar para dejar el primer elemento como el vertex del vertice en donde estamos en el grafo
         current_arista = current_arista.nextNode
              
     return graph #devolvemos el grafo
 
-def createGraphUS(l_vertices, l_aristas): #creamos el grafo y lo devolvemos con return
+def createGraphUS(l_vertices, l_aristas): #funcion de crear grafo con lista de adyacencia modificada para uniform search
     #creamos el grafo como lista de adyacencia
 
-    #creamos un array con longitud igual a el numero de vertices
+    #creamos una lista de python con longitud igual a el numero de vertices
     graph = []
     n_vertices = length(l_vertices)
     for i in range(n_vertices):
         graph.append(None)
 
-    n_aristas = length(l_aristas) #esto es para reccorer la lista eficientemente
+    n_aristas = length(l_aristas) #esto es para recorrer la lista eficientemente
     current_arista = l_aristas.head
     for j in range(n_aristas): #recorremos la lista de aristas y agregamos el segundo vertice de la arista a la lista del primer vertice en el grafo
         connection = Connection()
@@ -304,9 +312,9 @@ def createGraphUS(l_vertices, l_aristas): #creamos el grafo y lo devolvemos con 
 
             add(graph[current_arista.value.vi.value], connection)# añadimos su segundo elemento a la linkedlist del grafo en la posicion del vertice
 
-            add(graph[current_arista.value.vi.value], current_arista.value.vi) #esto nos deja el vertice que estabamos analizando siempre en el head
+            add(graph[current_arista.value.vi.value], current_arista.value.vi) #en la primera posicion de cada lista del grafo dejamos el vertex que representa ese vertice
         else:
-            insert(graph[current_arista.value.vi.value], connection, 1) #esto nos deja el vertex en primera posicion
+            insert(graph[current_arista.value.vi.value], connection, 1) #esto hace que el vertex se mantenga en primera posicion
         current_arista = current_arista.nextNode
              
     return graph #devolvemos el grafo

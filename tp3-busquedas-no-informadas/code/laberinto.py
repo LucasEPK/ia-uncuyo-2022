@@ -25,18 +25,6 @@ class Environment: #clase que configura la grilla, sus funciones y atributos
 
         self.obstacle_rate = insertar_obstaculos(self.grilla, obstacle_rate) #metemos obstaculos en la grilla segun el porcentaje
 
-    # def print_environment(self, agent): #imprime el mapa con el agente
-
-    #     filas = len(self.mapa)
-    #     for i in range(filas):
-    #         columnas = len(self.mapa[i])
-    #         for j in range(columnas):
-    #             if i != agent.posY or j != agent.posX:
-    #                 print(self.mapa[i][j], end=' ')
-    #             else:
-    #                 print('X', end=' ')
-    #         print()
-
 def insertar_obstaculos(mapa, obstacle_rate):#inserta obstaculos del porcentaje que nosotros queramos (obstacle_rate) del mapa de manera random
 
     obstaculo = 1
@@ -63,38 +51,38 @@ class Agent: #clase agente que va a ser quien resuelva el laberinto
         filas_grilla = len(env.grilla)
 
         grafo = crear_grafo_segun_grilla(env.grilla)
-        p_final_encodeado = createVertex((env.p_finalY)*filas_grilla + env.p_finalX)
-        p_inicial_encodeado = createVertex((self.posY)*filas_grilla + self.posX)
+        p_final_codificado = createVertex((env.p_finalY)*filas_grilla + env.p_finalX)
+        p_inicial_codificado = createVertex((self.posY)*filas_grilla + self.posX)
         frontier = LinkedList() #cola que nos sirve en bfs
-        solution = bfs(grafo, p_final_encodeado, p_inicial_encodeado, frontier, filas_grilla) #bfs nos va a dar las acciones a realizar
+        solution = bfs(grafo, p_final_codificado, p_inicial_codificado, frontier, filas_grilla) #bfs nos va a dar las acciones a realizar
         
         printSolution(solution, env.grilla, self.posY, self.posX)
         return 0
 
-    def solve_by_US(self, env):
+    def solve_by_US(self, env): #resolvemos el problema que nos da el environment mediante uniform search
         print_grilla(env.grilla)
         print("Guia: obstaculo=1, inicio=2, final=3, casilla libre=0")
         filas_grilla = len(env.grilla)
 
         grafo = crear_grafo_segun_grillaUS(env.grilla)
-        p_final_encodeado = createVertex((env.p_finalY)*filas_grilla + env.p_finalX)
-        p_inicial_encodeado = createVertex((self.posY)*filas_grilla + self.posX)
-        frontier = LinkedList() #cola que nos sirve en bfs
-        solution = uniform_cost_search(grafo, p_final_encodeado, p_inicial_encodeado, frontier, filas_grilla) #bfs nos va a dar las acciones a realizar
+        p_final_codificado = createVertex((env.p_finalY)*filas_grilla + env.p_finalX)
+        p_inicial_codificado = createVertex((self.posY)*filas_grilla + self.posX)
+        frontier = LinkedList() #cola que nos sirve en uniform cost search
+        solution = uniform_cost_search(grafo, p_final_codificado, p_inicial_codificado, frontier, filas_grilla) #uniform_cost_search nos va a dar las acciones a realizar
         
         printSolution(solution, env.grilla, self.posY, self.posX)
         return 0
 
-    def solve_by_dfsL(self, env):
+    def solve_by_dfsL(self, env): #resolvemos el problema que nos da el environment mediante limited dfs
         print_grilla(env.grilla)
         print("Guia: obstaculo=1, inicio=2, final=3, casilla libre=0")
         filas_grilla = len(env.grilla)
 
         grafo = crear_grafo_segun_grilla(env.grilla)
-        p_final_encodeado = createVertex((env.p_finalY)*filas_grilla + env.p_finalX)
-        p_inicial_encodeado = createVertex((self.posY)*filas_grilla + self.posX)
-        limite = trunc(len(env.grilla)+len(env.grilla[0])/2)
-        solution = dfs_limited(grafo, p_final_encodeado, p_inicial_encodeado, filas_grilla, limite) #bfs nos va a dar las acciones a realizar
+        p_final_codificado = createVertex((env.p_finalY)*filas_grilla + env.p_finalX)
+        p_inicial_codificado = createVertex((self.posY)*filas_grilla + self.posX)
+        limite = trunc(len(env.grilla)+len(env.grilla[0])/2) #tomamos el limite de posiciones que no podemos desplazar desde el principio como la suma de las filas y las columnas dividido 2
+        solution = dfs_limited(grafo, p_final_codificado, p_inicial_codificado, filas_grilla, limite) #dfs_limited nos va a dar las acciones a realizar
         
         printSolution(solution, env.grilla, self.posY, self.posX)
         return 0
@@ -137,7 +125,7 @@ def crear_grafo_segun_grilla(grilla): #crea un grafo con la codificacion de que 
 
     return createGraph(l_vertices, l_aristas)
 
-def crear_grafo_segun_grillaUS(grilla): #crea un grafo con la codificacion de que cada vertice tiene un numero del 0 al 9999 (ya que la grilla va a ser de 100x100 en nuestro caso en particular)
+def crear_grafo_segun_grillaUS(grilla): #crea un grafo modificado para uniform search que necesita aristas con peso con la codificacion de que cada vertice tiene un numero del 0 al 9999 (ya que la grilla va a ser de 100x100 en nuestro caso en particular)
 
     filas = len(grilla)
     columnas = len(grilla[0])
@@ -175,7 +163,6 @@ def crear_grafo_segun_grillaUS(grilla): #crea un grafo con la codificacion de qu
 
 
     return createGraphUS(l_vertices, l_aristas)
-#add(l_aristas, createWeightedArista(vertex_actual, vertex_der, weight))
 
 def printSolutionWords(solution): #funcion que imprime las acciones a realizar desde el principio para llegar a la resolucion
     UP= 0
@@ -219,7 +206,7 @@ def printSolution(solution, grilla, p_inicialY, p_inicialX): #funcion que imprim
     currentNode = solution.head
     anteriorY= p_inicialY
     anteriorX= p_inicialX
-    print("[", p_inicialY, ",", p_inicialX, "]")
+    print("[", p_inicialX, ",", p_inicialY, "]")
     for i in range(length(solution)):
 
         if currentNode.value == UP:
@@ -227,25 +214,25 @@ def printSolution(solution, grilla, p_inicialY, p_inicialX): #funcion que imprim
             p_resultadoY= anteriorY - 1
             p_resultadoX= anteriorX
             #grilla[p_resultadoY][p_resultadoX]= 2
-            print("up: [", p_resultadoY, ",", p_resultadoX, "]")
+            print("up: [", p_resultadoX, ",", p_resultadoY, "]")
         elif currentNode.value == LEFT:
             #grilla[anteriorY][anteriorX]= 0
             p_resultadoY= anteriorY
             p_resultadoX= anteriorX - 1
             #grilla[p_resultadoY][p_resultadoX]= 2
-            print("left: [", p_resultadoY, ",", p_resultadoX, "]")
+            print("left: [", p_resultadoX, ",", p_resultadoY, "]")
         elif currentNode.value == DOWN:
             #grilla[anteriorY][anteriorX]= 0
             p_resultadoY= anteriorY + 1
             p_resultadoX= anteriorX
             #grilla[p_resultadoY][p_resultadoX]= 2
-            print("down: [", p_resultadoY, ",", p_resultadoX, "]")
+            print("down: [", p_resultadoX, ",", p_resultadoY, "]")
         elif currentNode.value == RIGHT:
             #grilla[anteriorY][anteriorX]= 0
             p_resultadoY= anteriorY
             p_resultadoX= anteriorX + 1
             #grilla[p_resultadoY][p_resultadoX]= 2
-            print("right: [", p_resultadoY, ",", p_resultadoX, "]")
+            print("right: [", p_resultadoX, ",", p_resultadoY, "]")
 
         #print_grilla(grilla)
 
@@ -253,13 +240,13 @@ def printSolution(solution, grilla, p_inicialY, p_inicialX): #funcion que imprim
         anteriorX= p_resultadoX
         currentNode = currentNode.nextNode
 
-    print("cant de estados: ",length(solution))
-
-def print_grilla(matriz): #imprime las matrices en pantalla
+def print_grilla(matriz): #imprime la grilla en pantalla
 
     filas = len(matriz)
     for i in range(filas):
         columnas = len(matriz[i])
         for j in range(columnas):
+            if j == 0:
+                print(i, ":  ", end='')
             print(matriz[i][j], end='')
         print()

@@ -1,5 +1,7 @@
 #modulo que define 3 algoritmos de busqueda local, hill climbing basico, temple simulado y algoritmos geneticos
-from n_queens import *
+
+from f_matrices import crear_matriz
+import random
 
 class Node: #clase nodo en la cual vamos a guardar un tablero en state y el valor de la funcion heuristica de ese tablero en value
     state = None
@@ -25,11 +27,61 @@ def hillClimbing(tablero): #intenta solucionar el tablero con n reinas a travez 
     return current.state
 
 
-def SimulatedAnnealing(tablero):
-    bruh
+def SimulatedAnnealing(tablero, schedule):
 
-def GeneticAlgorithm(tablero):
-    bruh
+    current = make_node(tablero)
+    max_states = 35 #para que no se quede en un bucle
+    while max_states > 0:
+        T = schedule(max_states)
+        neighbor = random_successor(current.state) #es un node el cual tiene la mejor funcion heuristica entre los posibles proximos pasos
+        deltaE= current.value - neighbor.value
+        if deltaE > 0:
+            current = neighbor
+        else:
+            current = neighbor
+        if neighbor.value >= current.value: #si la mejor opcion es mayor que la que tenemos significa que ya tenemos una solucion local o global osea que la devolvemos
+            print("estados recorridos:", max_states)
+            print("mejor h encontrado:", current.value)
+            return current.state
+        current = neighbor #sino seguimos a ver hasta donde nos lleva el estado vecino
+        max_states -= 1
+
+    print("estados recorridos:", max_states)
+    print("mejor h encontrado:", current.value)
+    return current.state
+
+def geneticAlgorithm(population): #population es un array de python con k tableros, a travez del algoritmo genetico nos devuelve la mejor solucion encontrada en el limite de estados dado
+
+    max_states = 1000 #limite de estados
+
+    while max_states > 0:
+        size=len(population)
+        new_population = []
+        for i in range(size): #creamos una nueva poblacion seleccionado pares de individuos y tomando el hijo como nuevo miembro de la nueva poblacion, la nueva poblacion va a tener el mismo numero de individuos
+            #seleccionamos 2 padres
+            selection = random_selection(population)
+            x= selection[0]
+            y= selection[1]
+
+            #while l_equal(x, y): #como es reproduccion sexual necesitamos 2 individuos diferentes
+                #y= random_selection(population)
+
+            child = reproduce(x, y)
+
+            if 1 == random.randint(1,10): #pequeña chance de que el niño mute
+                child = mutate(child)
+
+            if fitness(child) == 28:
+                print("SOLUCION ENCONTRADA LOL")
+                return child
+                
+            new_population.append(child)
+        print("bruh")    
+        population = new_population
+
+        max_states -= 1
+
+    return best_fitness(population)
 
 #!!!!!!!!!!!!!!!!!!!!!! funciones auxiliares!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -56,14 +108,51 @@ def best_successor(tablero): #segun el tablero otorgado devuelve el tablero con 
                 if h1 < min_value: #como buscamos el que tiene menos amenazas, buscamos el menor valor y copiamos el tablero
                     min_value = h1
                     tablero_salvado = tablero_M.copy()
-    hola = 1
+
     return make_node(tablero_salvado) #devolvemos el tablero con la funcion heuristica menor en forma de nodo
+
+def random_successor(tablero): #segun el tablero otorgado devuelve un tablero random que encuentra despues de mover una reina en alguna columna
+    
+    size = len(tablero)
+    posicion_ocupada = True
+    while posicion_ocupada: #simulacion de un do while el cual se ocupa de revisar que no estemos elegiendo una posicion en la cual ya se encuentra una reina
+        #elegimos de manera random a la posicion en la cual se va a mover una reina
+        i= random.randint(0, size-1)
+        j= random.randint(0, size-1)
+            
+        #creamos un tablero en donde la reina de la columna j se mueve a la fila (size-1)-i (esto se hace para que las filas se lean de abajo para arriba)
+        tablero_M= tablero.copy()
+        tablero_M[j] = (size-1)-i
+
+        if tablero_M[j] != tablero[j]:
+            posicion_ocupada = False
+
+
+    return make_node(tablero_M) #devolvemos un nodo con un tablero random
+
+
+def random_selection(population): #selecciona de manera random (aunque si tienen mejor fitness tienen más chances) un individuo de la poblacion
+    k= len(population)
+    fitness_l= []
+    for pos in range(k):#calculamos el fitness de cada individuo de la poblacion y lo insertamos en una lista
+        fitness_l.append(fitness(population[pos]))
+
+    l_probability= probability_F(fitness_l) #calculamos las probabilidades segun el fitness
+
+    seleccionado = random.choices(population, weights= l_probability, k=2)
+    return seleccionado
+
+def reproduce(x, y): #toma como parametro dos arreglos x e y, los divide en alguna parte c y toma la parte antes de c de x y la despues de c de y y las une para formar el hijo(tablero)
+
+    n= len(x)
+    c= random.randint(1, n-1)
+    child = x[:c]+y[c:]
+    return child
 
 def h(tablero): #funcion heuristica contabiliza la cantidad de pares de reinas amenazadas para un tablero y las devuelve
     h=0
     l_tablero = len(tablero)
     for i in range(0, l_tablero):
-        #asumiendo que mi teoria es verdad, nunca miramos para la izquierda
 
         for j in range(i+1, l_tablero):
             #revisamos horizontal
@@ -74,3 +163,68 @@ def h(tablero): #funcion heuristica contabiliza la cantidad de pares de reinas a
                 h+=1
         
     return h
+
+def fitness(tablero):#funcion fitness que al recibir un tablero devuelve el numero de pares de reina no atacantes
+    l_tablero= len(tablero)
+    fitness = 0
+
+    for pos in range(l_tablero):
+        atacantes = 0
+        for j in range(pos+1, l_tablero):#calculamos las reinas que atacan a una reina
+            #revisamos horizontal
+            if tablero[j] == tablero[pos]: #si esto pasa estan en la misma fila, osea se amenazan
+                atacantes +=1
+            #revisamos diagonales
+            elif tablero[j] == tablero[pos]+(j-pos) or tablero[j] == tablero[pos]-(j-pos): #j-pos representa el aumento para que j sea una diagonal con respecto a pos
+                atacantes +=1
+
+        #calculamos los pares de reinas que no atacan restandole a cada par de reinas que tiene una reina a su derecha las reinas que si la atacan
+        fitness = fitness + (8-(pos+1))-atacantes
+
+    return fitness #devolvemos el numero de pares de reinas totales que no atacan
+
+def probability_F(l_fitness): #teniendo un array de fitness devuelve un array de probabilidades
+    len_fitness = len(l_fitness)
+    l_probability = []
+
+    #hacemos calculos para poder sacar el k que multiplicado por un fitness nos da un porcentaje
+    suma= 0
+    for i in range(len_fitness):
+        suma = suma + l_fitness[i]
+
+    k=100/suma
+
+    for i in range(len_fitness):
+        l_probability.append(round(k * l_fitness[i]))
+
+    return l_probability
+
+def mutate(tablero): #cambiamos el lugar de una reina random a un lugar random
+    len_tablero = len(tablero)
+    ri=random.randint(0, len_tablero-1)
+    tablero[ri]= random.randint(0, len_tablero-1)
+    return tablero
+
+def best_fitness(population): #encuentra el individuo con mayor fitness en una poblacion y lo devuelve
+    len_population = len(population)
+    mayor_fitness = 0
+    for pos in range(0, len_population):
+        current_fitness = fitness(population[pos])
+        if current_fitness > mayor_fitness:
+            mayor_fitness = current_fitness
+            mayor_t_fitness = population[pos]
+
+    print("mayor fitness:", mayor_fitness)
+    return mayor_t_fitness
+
+def l_equal(x, y):#controla si dos arrays son iguales
+    len_x = len(x)
+    len_y = len(y)
+    if len_x == len_y:
+        for i in range(len_x):
+            if x[i] != y[i]:
+                return False
+    else:
+        return False
+
+    return True

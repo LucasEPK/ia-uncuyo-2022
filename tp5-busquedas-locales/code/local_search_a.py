@@ -1,7 +1,7 @@
 #modulo que define 3 algoritmos de busqueda local, hill climbing basico, temple simulado y algoritmos geneticos
 
 from f_matrices import crear_matriz
-import random
+import random, math
 
 class Node: #clase nodo en la cual vamos a guardar un tablero en state y el valor de la funcion heuristica de ese tablero en value
     state = None
@@ -27,26 +27,35 @@ def hillClimbing(tablero): #intenta solucionar el tablero con n reinas a travez 
     return current.state
 
 
-def SimulatedAnnealing(tablero, schedule):
+def SimulatedAnnealing(tablero): #intenta resolver el tablero con n reinas a travez de un algoritmo de temple simulado, devuelve la solucion encontrada o hasta donde se llegó antes de explorar la maxima cantidad de estados
 
     current = make_node(tablero)
-    max_states = 35 #para que no se quede en un bucle
-    while max_states > 0:
-        T = schedule(max_states)
-        neighbor = random_successor(current.state) #es un node el cual tiene la mejor funcion heuristica entre los posibles proximos pasos
-        deltaE= current.value - neighbor.value
+    T = 10 #para que no se quede en un bucle
+    tiempo= True
+    estados_recorridos = 0
+    while tiempo == True:
+        neighbor = random_successor(current.state) #es un node en el cual se elige un tablero random donde se a movido solo 1 reina con respecto al tablero original
+        
+        if neighbor.value == 0:
+            print("estados recorridos:", estados_recorridos)
+            print("mejor h encontrado:", neighbor.value)
+            return neighbor.state
+
+        deltaE= (current.value - neighbor.value)
+        probabilityE = 1/math.exp((-deltaE*100)/T)
+        #print(probabilityE)
+        random_n = random.random() #numero random entre 1(no incluido) y 0 
         if deltaE > 0:
             current = neighbor
-        else:
+        elif random_n <= probabilityE:
             current = neighbor
-        if neighbor.value >= current.value: #si la mejor opcion es mayor que la que tenemos significa que ya tenemos una solucion local o global osea que la devolvemos
-            print("estados recorridos:", max_states)
-            print("mejor h encontrado:", current.value)
-            return current.state
-        current = neighbor #sino seguimos a ver hasta donde nos lleva el estado vecino
-        max_states -= 1
 
-    print("estados recorridos:", max_states)
+        if T > 1:
+            T -= 1
+        estados_recorridos += 1
+
+
+    print("estados recorridos:", estados_recorridos)
     print("mejor h encontrado:", current.value)
     return current.state
 
@@ -62,9 +71,6 @@ def geneticAlgorithm(population): #population es un array de python con k tabler
             selection = random_selection(population)
             x= selection[0]
             y= selection[1]
-
-            #while l_equal(x, y): #como es reproduccion sexual necesitamos 2 individuos diferentes
-                #y= random_selection(population)
 
             child = reproduce(x, y)
 
@@ -216,15 +222,3 @@ def best_fitness(population): #encuentra el individuo con mayor fitness en una p
 
     print("mayor fitness:", mayor_fitness)
     return mayor_t_fitness
-
-def l_equal(x, y):#controla si dos arrays son iguales
-    len_x = len(x)
-    len_y = len(y)
-    if len_x == len_y:
-        for i in range(len_x):
-            if x[i] != y[i]:
-                return False
-    else:
-        return False
-
-    return True

@@ -7,7 +7,11 @@ agente = Agent()
 #agente.solve_by_HillClimbing(env)
 #??????????????recorre demasiados estados fijate porque????????????
 
+#env = Environment(8)
+#env.crear_k_tableros(8)
+#agente.solve_by_GeneticAlgorithm(env)
+
 env = Environment(8)
-env.crear_k_tableros(8)
-agente.solve_by_GeneticAlgorithm(env)
+env.crear_tablero()
+agente.solve_by_SimulatedAnnealing(env)
 

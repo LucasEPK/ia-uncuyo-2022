@@ -1,6 +1,6 @@
 #modulo que configura el agente que mueve las reinas en el tablero, que va a ser resuelto por hill climbing, simulated annealing y algoritmo genetico
 from f_matrices import *
-from local_search_a import geneticAlgorithm, hillClimbing
+from local_search_a import SimulatedAnnealing, geneticAlgorithm, hillClimbing
 import math, random
 
 class Environment: #clase que configura el tablero sus funciones y atributos y coloca las reinas de manera random en el
@@ -40,6 +40,13 @@ class Agent: #clase agente que va a ser quien resuelva el problema de las n_rein
         
         print("Mejor solucion encontrada por Hill Climbing:\n", solution)
         return
+
+    def solve_by_SimulatedAnnealing(self, env):
+        print("Original:\n", env.tablero)
+
+        solution = SimulatedAnnealing(env.tablero)
+
+        print("Mejor solucion encontrada por simulated annealing:\n", solution)
 
     def solve_by_GeneticAlgorithm(self, env):
         print("Poblacion original:\n", env.population)

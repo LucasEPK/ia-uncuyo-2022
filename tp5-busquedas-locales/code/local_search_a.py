@@ -13,30 +13,39 @@ def hillClimbing(tablero): #intenta solucionar el tablero con n reinas a travez 
 
     current = make_node(tablero)
     max_states = 35 #para que no se quede en un bucle
+    estados_recorridos = 0
     while max_states > 0:
         neighbor = best_successor(current.state) #es un node el cual tiene la mejor funcion heuristica entre los posibles proximos pasos
+        print("h:", neighbor.value)
         if neighbor.value >= current.value: #si la mejor opcion es mayor que la que tenemos significa que ya tenemos una solucion local o global osea que la devolvemos
-            print("estados recorridos:", max_states)
+            print("estados recorridos:", estados_recorridos)
             print("mejor h encontrado:", current.value)
+            if current.value == 0:
+                print("SOLUCION OPTIMA")
             return current.state
         current = neighbor #sino seguimos a ver hasta donde nos lleva el estado vecino
         max_states -= 1
+        estados_recorridos += 1
 
-    print("estados recorridos:", max_states)
+    print("estados recorridos:", estados_recorridos)
     print("mejor h encontrado:", current.value)
+    if current.value == 0:
+        print("SOLUCION OPTIMA")
     return current.state
 
 
 def SimulatedAnnealing(tablero): #intenta resolver el tablero con n reinas a travez de un algoritmo de temple simulado, devuelve la solucion encontrada o hasta donde se llegó antes de explorar la maxima cantidad de estados
 
     current = make_node(tablero)
-    T = 10 #para que no se quede en un bucle
-    tiempo= True
+    T = 10
+    max_states= 5000
     estados_recorridos = 0
-    while tiempo == True:
+    while max_states > 0:
         neighbor = random_successor(current.state) #es un node en el cual se elige un tablero random donde se a movido solo 1 reina con respecto al tablero original
-        
+        print("h:", neighbor.value)
+        estados_recorridos += 1
         if neighbor.value == 0:
+            print("SOLUCION OPTIMA ENCONTRADA")
             print("estados recorridos:", estados_recorridos)
             print("mejor h encontrado:", neighbor.value)
             return neighbor.state
@@ -52,7 +61,9 @@ def SimulatedAnnealing(tablero): #intenta resolver el tablero con n reinas a tra
 
         if T > 1:
             T -= 1
-        estados_recorridos += 1
+
+        max_states -= 1
+        
 
 
     print("estados recorridos:", estados_recorridos)
@@ -61,11 +72,14 @@ def SimulatedAnnealing(tablero): #intenta resolver el tablero con n reinas a tra
 
 def geneticAlgorithm(population): #population es un array de python con k tableros, a travez del algoritmo genetico nos devuelve la mejor solucion encontrada en el limite de estados dado
 
-    max_states = 1000 #limite de estados
-
+    max_states = 10000 #limite de estados
+    estados_recorridos = 0
+    size=len(population)
+    max_fitness= calcular_fitness_max(population[0])
     while max_states > 0:
-        size=len(population)
+        print("h:", fitness(best_fitness(population)))
         new_population = []
+        estados_recorridos += 1
         for i in range(size): #creamos una nueva poblacion seleccionado pares de individuos y tomando el hijo como nuevo miembro de la nueva poblacion, la nueva poblacion va a tener el mismo numero de individuos
             #seleccionamos 2 padres
             selection = random_selection(population)
@@ -74,19 +88,21 @@ def geneticAlgorithm(population): #population es un array de python con k tabler
 
             child = reproduce(x, y)
 
-            if 1 == random.randint(1,10): #pequeña chance de que el niño mute
+            if 1 == random.randint(1,100): #pequeña chance de que el niño mute
                 child = mutate(child)
-
-            if fitness(child) == 28:
-                print("SOLUCION ENCONTRADA LOL")
+            
+            if fitness(child) == max_fitness:
+                print("estados recorridos:", estados_recorridos)
+                print("SOLUCION OPTIMA ENCONTRADA")
+                print("mejor fitness encontrado:", max_fitness)
                 return child
                 
-            new_population.append(child)
-        print("bruh")    
+            new_population.append(child)   
         population = new_population
 
         max_states -= 1
 
+    print("estados recorridos:", estados_recorridos)
     return best_fitness(population)
 
 #!!!!!!!!!!!!!!!!!!!!!! funciones auxiliares!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -171,12 +187,12 @@ def h(tablero): #funcion heuristica contabiliza la cantidad de pares de reinas a
     return h
 
 def fitness(tablero):#funcion fitness que al recibir un tablero devuelve el numero de pares de reina no atacantes
-    l_tablero= len(tablero)
+    size= len(tablero)
     fitness = 0
 
-    for pos in range(l_tablero):
+    for pos in range(size):
         atacantes = 0
-        for j in range(pos+1, l_tablero):#calculamos las reinas que atacan a una reina
+        for j in range(pos+1, size):#calculamos las reinas que atacan a una reina
             #revisamos horizontal
             if tablero[j] == tablero[pos]: #si esto pasa estan en la misma fila, osea se amenazan
                 atacantes +=1
@@ -185,7 +201,7 @@ def fitness(tablero):#funcion fitness que al recibir un tablero devuelve el nume
                 atacantes +=1
 
         #calculamos los pares de reinas que no atacan restandole a cada par de reinas que tiene una reina a su derecha las reinas que si la atacan
-        fitness = fitness + (8-(pos+1))-atacantes
+        fitness = fitness + (size-(pos+1))-atacantes
 
     return fitness #devolvemos el numero de pares de reinas totales que no atacan
 
@@ -222,3 +238,11 @@ def best_fitness(population): #encuentra el individuo con mayor fitness en una p
 
     print("mayor fitness:", mayor_fitness)
     return mayor_t_fitness
+
+def calcular_fitness_max(tablero):
+    size = len(tablero)
+    fitness_max = 0
+    for i in range(size):
+        fitness_max += (size-1)-i
+
+    return fitness_max

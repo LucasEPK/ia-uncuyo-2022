@@ -16,7 +16,6 @@ def hillClimbing(tablero): #intenta solucionar el tablero con n reinas a travez 
     estados_recorridos = 0
     while max_states > 0:
         neighbor = best_successor(current.state) #es un node el cual tiene la mejor funcion heuristica entre los posibles proximos pasos
-        print("h:", neighbor.value)
         if neighbor.value >= current.value: #si la mejor opcion es mayor que la que tenemos significa que ya tenemos una solucion local o global osea que la devolvemos
             print("estados recorridos:", estados_recorridos)
             print("mejor h encontrado:", current.value)
@@ -42,7 +41,6 @@ def SimulatedAnnealing(tablero): #intenta resolver el tablero con n reinas a tra
     estados_recorridos = 0
     while max_states > 0:
         neighbor = random_successor(current.state) #es un node en el cual se elige un tablero random donde se a movido solo 1 reina con respecto al tablero original
-        print("h:", neighbor.value)
         estados_recorridos += 1
         if neighbor.value == 0:
             print("SOLUCION OPTIMA ENCONTRADA")
@@ -77,7 +75,6 @@ def geneticAlgorithm(population): #population es un array de python con k tabler
     size=len(population)
     max_fitness= calcular_fitness_max(population[0])
     while max_states > 0:
-        print("h:", fitness(best_fitness(population)))
         new_population = []
         estados_recorridos += 1
         for i in range(size): #creamos una nueva poblacion seleccionado pares de individuos y tomando el hijo como nuevo miembro de la nueva poblacion, la nueva poblacion va a tener el mismo numero de individuos

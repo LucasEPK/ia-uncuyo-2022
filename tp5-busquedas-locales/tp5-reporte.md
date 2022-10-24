@@ -15,4 +15,4 @@
 ![](funcion_h.PNG)
 - C)
 
-Según las estadisticas que he obtenido el algoritmo más indicado para solucionar el problema de las n-reinas es el de simulated annealing ya que a parte de ser muy rapido no recorre tantos estados como el genetic algorithm y es optimo, no como el hill climbing
+Según las estadisticas que he obtenido el algoritmo más indicado para solucionar el problema de las n-reinas es el de simulated annealing ya que a parte de ser muy rapido no recorre tantos estados como el genetic algorithm y tiene un gran porcentaje de obtener soluciones optimas, no como el hill climbing

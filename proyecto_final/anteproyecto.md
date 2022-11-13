@@ -5,7 +5,7 @@
 ### Lucas Moyano
 
 ## Descripcion
-![](skiings_image.png)
+![](skiings_image.PNG)
 
 La idea es programar un algoritmo genetico para el juego de atari **Skiings** que logre el mejor puntaje posible
 
@@ -46,6 +46,6 @@ Como es un juego en tiempo real el entorno va cambiando cada segundo, haciendo q
 9. Escritura informe final [5 dias]
 
 ## Cronograma estimado de actividades
-![](diagrama_gantt.png)
+![](diagrama_gantt.PNG)
 ## Bibliografia
 [AIMA 3rd edition](https://zoo.cs.yale.edu/classes/cs470/materials/aima2010.pdf)

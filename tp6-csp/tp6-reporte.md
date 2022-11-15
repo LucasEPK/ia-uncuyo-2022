@@ -590,8 +590,6 @@ D(T) = {red,blue,green}
 
 3) *Cuál es la complejidad en el peor caso cuando se ejecuta AC-3 en un árbol estructurado CSP. (i.e. Cuando el grafo de restricciones forma un árbol: cualquiera dos variables están relacionadas por a lo sumo un camino).*
 
-Asumiendo que tenemos n vertices, como es un arbol vamos a tener n-1 aristas, osea que teniendo en cuenta que una arista puede aparecer a lo sumo d veces en la cola, la complejidad va a ser de O((n-1)*(d^3)), d siendo la cantidad maxima de elementos en un dominio
-
 Teniendo n vertices y a lo sumo d numeros en los dominios el orden va a ser de O(n*(d^2)) d^2 porque los 2 vertices de una arista tienen d posibles variables.
 
 4) *AC-3 coloca de nuevo en la cola todo arco ( Xk, Xi) cuando cualquier valor es removido del dominio de Xi incluso si cada valor de Xk es consistente con los valores restantes de Xi. Supongamos que por cada arco ( Xk,Xi) se puede llevar la cuenta del número de valores restantes de Xi que sean consistentes con cada valor de Xk . Explicar como actualizar ese número de manera eficiente y demostrar que la arco consistencia puede lograrse en un tiempo total O(n2d2 )*

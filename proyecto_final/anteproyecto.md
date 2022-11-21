@@ -33,7 +33,7 @@ Ademas de comparar el algoritmo genetico con el world record, voy a compararlo c
 
 ## 6. Propuesta algoritmo genetico:
 
-Para lograr esto la idea es ejecutar el juego y que de manera random 10 players en contemporaneo vayan yendo a la derecha,a la izquierda o no haga nada hasta llegar al final. 
+Para lograr esto la idea es ejecutar el juego y que de manera random 10 players en contemporaneo vayan yendo a la derecha,a la izquierda o no hagan nada hasta llegar al final.
 ### 6.1 Representacion
 Mientras el juego se está ejecutando se creará una lista de python para cada player, que va a guardar la acción que se ha realizado (0 si no se hace nada, 1 si se va a la derecha, 2 si se va a la izquierda) en la posicion que representa el segundo en que se hizo (Por ejemplo si se fue a la izquierda cuando el timer dice 0:40:34 se va a guardar en la posicion [403] un 2, descartamos el ultimo numero porque tanta precision no nos sirve). 
 Despues de esto vamos a aplicar el algoritmo genetico que según la funcion de fitness **(6.2)** va a elegir pares de miembros de la poblacion y los va a reproducir usando cruzamiento, mutacion y elitismo **(6.3)**.
@@ -48,7 +48,7 @@ Como operadores vamos a implementar:
 
 
 ## 7. Justificacion
-Como es un juego en tiempo real el entorno va cambiando cada segundo, haciendo que se haga dificil programarlo de manera tradicional, de esta forma podemos llegar a un algoritmo que llegue al mejor tiempo aunque cambiemos la posicion de los obstaculos (Osea el environment). El algoritmo genetico quizas no sea el más eficiente pero dandole el tiempo necesario da muy buenos resultados.
+Como es un juego en tiempo real el entorno va cambiando cada segundo, haciendo que se haga dificil programarlo de manera tradicional, con inteligencia artificial podemos llegar a un algoritmo que se adapte a cualquier situacion mientras la esta haciendo. Esto se asemeja mucho a lo que hacemos nosotros, por eso esto es importante y aunque ahora lo estemos usando para completar un juego esto se podria utilizar en cosas más complejas, utiles y avanzadas.
 
 ## 8. Listado de actividades a realizar
 1. Aprender a usar la api de openai gym y ver como funciona más en profundidad [2 dias]
